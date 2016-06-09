@@ -42,7 +42,7 @@
                             <label>Name:</label>
                             <input type="text" name="NAME_MEDIA" size="auto"/>
                             </br>
-                            <label>Region:</label>                            
+                            <label>Country</label>                            
                             <select name="NAME_COUNTRY">
                                 <%
                                     RegionDAO region = new RegionDAO();
