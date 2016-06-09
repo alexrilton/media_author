@@ -3,6 +3,12 @@
     Created on : 23/05/2016, 15:55:23
     Author     : alex
 --%>
+<%@page import="Entities.Country"%>
+<%@page import="DAO.CountryDAO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Entities.Region"%>
+<%@page import="java.util.List"%>
+<%@page import="DAO.RegionDAO"%>
 <c:if test="condition">
     <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -39,8 +45,26 @@
                         </div>
                         <div>                             
                             <label>Country:</label>
-                            <select>
-                                                                                            
+                            <select name="NAME_COUNTRY">
+                                <%
+                                    RegionDAO region = new RegionDAO();
+                                    List<Region> regions = new ArrayList();
+                                    regions = region.listaRegion();
+                                    for (int i = 0; i < regions.size(); i++) {
+                                        out.println("<optgroup");
+                                        out.println(" label='"+ regions.get(i).getNameRegion()+"'>");
+                                        out.print("<div> "+regions.get(i).getNameRegion()+"</div>");
+                                        CountryDAO country = new CountryDAO();
+                                        List<Country> countries = new ArrayList();
+                                        countries = country.listaCountry(regions.get(i).getIdRegion());
+                                        for (int j = 0; j < countries.size(); j++) {
+                                            out.println("<option>");
+                                            out.println(countries.get(j).getNameCountry());
+                                            out.println("</option>");
+                                        }
+                                        out.println("</optgroup>");
+                                    }
+                                %>    
                             </select>
                         </div>
                     </fieldset>
