@@ -41,7 +41,7 @@
                         <legend>Personal</legend>
                         <div>
                             <label>Name:</label>
-                            <input type="text" name="name" size="auto"/>
+                            <input type="text" name="name1" size="auto"/>
                         </div>
                         <div>                             
                             <label>Country:</label>
