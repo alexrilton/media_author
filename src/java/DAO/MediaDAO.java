@@ -8,6 +8,7 @@ package DAO;
 import Entities.Country;
 import Entities.Media;
 import darethink.database_connection;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -46,14 +47,15 @@ public class MediaDAO extends database_connection{
     }
     
     public List<Media> listaMedia() throws Exception{
-        List<Media> listaMedia = new LinkedList();
-        sql = "SELECT * FROM `media`";
+        List<Media> listaMedia = new ArrayList();
+        sql = "SELECT * FROM media GROUP BY NAME_MEDIA";
         rs = stm.executeQuery(sql);
+        CountryDAO daoc = new CountryDAO();
         while(rs.next()){
             m = new Media();
             m.setIdMedia(rs.getInt(1));
             m.setNameMedia(rs.getString(2));
-            m.setCountry((Country) rs.getObject(3));
+            m.setCountry(daoc.getCountrybyID(rs.getInt(3)));
             listaMedia.add(m);
         }
         return listaMedia;

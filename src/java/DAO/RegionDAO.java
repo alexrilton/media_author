@@ -43,6 +43,18 @@ public class RegionDAO extends database_connection{
         return r;
     }
     
+    public String getRegionNameById(Integer idRegion) throws Exception{
+        sql = "SELECT * FROM region WHERE ID_REGION = " + idRegion;
+        rs = stm.executeQuery(sql);
+        String name = null;
+        if(rs.next()){
+            r.setIdRegion(rs.getInt(1));
+            r.setNameRegion(rs.getString(2));
+        }
+        name = r.getNameRegion();;
+        return name;
+    }
+    
     public int getRegionId(String nameRegion) throws Exception{
         sql = "SELECT  ID_REGION FROM region WHERE NAME_REGION ='" +nameRegion+"'";
         rs = stm.executeQuery(sql);

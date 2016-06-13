@@ -8,6 +8,7 @@ package DAO;
 import Entities.Speciality;
 import Entities.Theme;
 import darethink.database_connection;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -45,13 +46,28 @@ public class SpecialityDAO extends database_connection{
     }
     
     public List<Speciality> listaSpeciality() throws Exception{
-        List <Speciality> listaSpeciality = new LinkedList();
+        List <Speciality> listaSpeciality = new ArrayList();
         sql = "SELECT * FROM speciality";
         rs = stm.executeQuery(sql);
         while(rs.next()){
             spec = new Speciality();
             spec.setIdSpec(rs.getInt(1));
             spec.setNameSpec(rs.getNString(2));
+            listaSpeciality.add(spec);
+        }
+        return listaSpeciality;
+    }
+    
+    public List<Speciality> listaSpeciality(int idTheme) throws Exception{
+        List<Speciality> listaSpeciality = new ArrayList();
+        sql = "select * from speciality where ID_THEME =" + idTheme;
+        rs = stm.executeQuery(sql);
+        ThemeDAO daot = new ThemeDAO();
+        while(rs.next()){
+            spec = new Speciality();
+            spec.setIdSpec(rs.getInt(1));
+            spec.setNameSpec(rs.getString(2));
+            spec.setTheme(daot.getThemebyId(rs.getInt(3)));
             listaSpeciality.add(spec);
         }
         return listaSpeciality;

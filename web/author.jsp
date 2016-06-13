@@ -24,7 +24,6 @@
             <div class="content" style="width:25%; float:left">
 		<div class="title">Menu</div>
                 <ul>
-                    <li><a href="insertAuthor.jsp">Insert Authoraaa</a></li>
                     <li><a href="insertAuthor.jsp">Insert Author</a></li>
                     <li><a href="editAuthor.jsp">Edit Author</a></li> 
                     <li style="border-bottom: 5px solid #dfdfdf"><a href="home.jsp">Back</a></li>

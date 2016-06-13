@@ -45,6 +45,17 @@ public class CountryDAO extends database_connection{
         return id;
     }
     
+    public Country getCountrybyID(Integer idCountry) throws Exception{
+        sql = "SELECT  * FROM country WHERE ID_COUNTRY = " + idCountry;
+        rs = stm.executeQuery(sql);
+        if(rs.next()){
+            c.setIdCountry(rs.getInt(1));
+            c.setNameCountry(rs.getString(2));
+        }
+        return c;
+    }
+    
+    
     public List<Country> listaCountry() throws Exception{
         List<Country> listaCountry = new ArrayList();
         sql = "SELECT * FROM  country";
@@ -63,6 +74,21 @@ public class CountryDAO extends database_connection{
     public List<Country> listaCountry(int idRegion) throws Exception{
         List<Country> listaCountry = new ArrayList();
         sql = "select * from country where ID_REGION =" + idRegion;
+        rs = stm.executeQuery(sql);
+        RegionDAO daor = new RegionDAO();
+        while(rs.next()){
+            c = new Country();
+            c.setIdCountry(rs.getInt(1));
+            c.setNameCountry(rs.getString(2));
+            c.setRegion(daor.getRegionbyID(rs.getInt(3)));
+            listaCountry.add(c);
+        }
+        return listaCountry;
+    }
+    
+    public List<Country> listaCountryByMedia(String nameMedia) throws Exception{
+        List<Country> listaCountry = new ArrayList();
+        sql = "SELECT c.ID_COUNTRY, c.NAME_COUNTRY, c.ID_REGION FROM country c, media m WHERE m.NAME_MEDIA = '" + nameMedia + "'AND m.ID_COUNTRY = c.ID_COUNTRY";
         rs = stm.executeQuery(sql);
         RegionDAO daor = new RegionDAO();
         while(rs.next()){

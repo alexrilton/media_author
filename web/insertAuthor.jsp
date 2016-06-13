@@ -3,6 +3,12 @@
     Created on : 23/05/2016, 15:55:23
     Author     : alex
 --%>
+<%@page import="Entities.Theme"%>
+<%@page import="DAO.ThemeDAO"%>
+<%@page import="Entities.Speciality"%>
+<%@page import="DAO.SpecialityDAO"%>
+<%@page import="Entities.Media"%>
+<%@page import="DAO.MediaDAO"%>
 <%@page import="Entities.Country"%>
 <%@page import="DAO.CountryDAO"%>
 <%@page import="java.util.ArrayList"%>
@@ -69,22 +75,80 @@
                         </div>
                     </fieldset>
                     <fieldset>
+                        </br>
                         <legend>Media, Speciality and Region</legend>
                         <div>
                         <label>Media:</label>
-                        <select>
+                        <select name="NAME_MEDIA">
+                            <%
+                                    MediaDAO media = new MediaDAO();
+                                    List<Media> medias = new ArrayList();
+                                    medias = media.listaMedia();
+                                    for (int i = 0; i < medias.size(); i++) {
+                                        out.println("<optgroup");
+                                        out.println(" label='"+ medias.get(i).getNameMedia()+"'>");
+                                        out.print("<div> "+medias.get(i).getNameMedia()+"</div>");
+                                        CountryDAO country = new CountryDAO();
+                                        List<Country> countries = new ArrayList();
+                                        countries = country.listaCountryByMedia(medias.get(i).getNameMedia());
+                                        for (int j = 0; j < countries.size(); j++) {
+                                            out.println("<option>");
+                                            //out.println(countries.get(j).getRegion().getNameRegion());
+                                            //out.println(" - ");
+                                            out.println(countries.get(j).getNameCountry());
+                                            out.println("</option>");
+                                        }
+                                        out.println("</optgroup>");
+                                    }
+                                %>    
                         </select>
                         </div>
                         <div>
                         <label>Speciality:</label>
-                        <select>
-                            
+                        <select name="NAME_SPEC">
+                            <%
+                                    ThemeDAO theme = new ThemeDAO();
+                                    List<Theme> themes = new ArrayList();
+                                    themes = theme.listaTheme();
+                                    for (int i = 0; i < themes.size(); i++) {
+                                        out.println("<optgroup");
+                                        out.println(" label='"+ themes.get(i).getNameTheme()+"'>");
+                                        out.print("<div> "+themes.get(i).getNameTheme()+"</div>");
+                                        SpecialityDAO spec = new SpecialityDAO();
+                                        List<Speciality> specs = new ArrayList();
+                                        specs = spec.listaSpeciality(themes.get(i).getIdTheme());
+                                        for (int j = 0; j < specs.size(); j++) {
+                                            out.println("<option>");
+                                            out.println(specs.get(j).getNameSpec());
+                                            out.println("</option>");
+                                        }
+                                        out.println("</optgroup>");
+                                    }
+                                %>
                         </select>
                         </div>
                         <div>
                         <label>Region:</label>
-                        <select>
-                            
+                        <select name="NAME_COUNTRY2">
+                            <%
+                                    region = new RegionDAO();
+                                    regions = new ArrayList();
+                                    regions = region.listaRegion();
+                                    for (int i = 0; i < regions.size(); i++) {
+                                        out.println("<optgroup");
+                                        out.println(" label='"+ regions.get(i).getNameRegion()+"'>");
+                                        out.print("<div> "+regions.get(i).getNameRegion()+"</div>");
+                                        CountryDAO country = new CountryDAO();
+                                        List<Country> countries = new ArrayList();
+                                        countries = country.listaCountry(regions.get(i).getIdRegion());
+                                        for (int j = 0; j < countries.size(); j++) {
+                                            out.println("<option>");
+                                            out.println(countries.get(j).getNameCountry());
+                                            out.println("</option>");
+                                        }
+                                        out.println("</optgroup>");
+                                    }
+                                %>
                         </select>
                         </div>                       
                     </fieldset>

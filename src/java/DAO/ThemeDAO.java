@@ -39,11 +39,10 @@ public class ThemeDAO extends database_connection{
         if(rs.next()){
             t.setIdTheme(rs.getInt(1));
             t.setNameTheme(rs.getString(2));
-            //st.setSpec((Speciality) rs.getObject(3));
         }
         return t;
     }
-    
+       
     public int getThemeId(String nameTheme) throws Exception{
         sql = "SELECT ID_THEME FROM theme WHERE NAME_THEME ='" +nameTheme+"'";
         rs = stm.executeQuery(sql);
