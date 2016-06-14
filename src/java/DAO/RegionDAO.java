@@ -7,8 +7,8 @@ package DAO;
 
 import Entities.Region;
 import darethink.database_connection;
+import java.sql.Connection;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -20,7 +20,7 @@ public class RegionDAO extends database_connection{
     String sql;
     
     public RegionDAO() throws Exception{
-        conectar();
+        Connection conectar = conectar();
     }
     
     public Region getRegion(String nameRegion) throws Exception{

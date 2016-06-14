@@ -78,13 +78,11 @@ public class InsertRegion extends HttpServlet {
         response.setContentType("text/html");
     
         PrintWriter pw = response.getWriter();
-        String connectionURL = "jdbc:mysql://127.0.0.1:3306/author_media";
-        Connection connection;
         int i = 0;
         try{
             String name_region = request.getParameter("NAME_REGION");
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(connectionURL, "root", "");
+            //Class.forName("com.mysql.jdbc.Driver");
+            //connection = DriverManager.getConnection(connectionURL, "root", "");
             RegionDAO dao = new RegionDAO();
             dao.insertRegion(name_region);
             i = 1;
