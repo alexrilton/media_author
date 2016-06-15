@@ -8,6 +8,7 @@ package DAO;
 import Entities.Country;
 import Entities.Region;
 import darethink.database_connection;
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class CountryDAO extends database_connection{
     String sql;
     
     public CountryDAO() throws Exception{
-        conectar();
+        Connection conectar = conectar();
     }
     
     public Country getCountryName(String nameCountry) throws Exception{

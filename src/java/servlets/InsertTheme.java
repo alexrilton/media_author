@@ -85,8 +85,6 @@ public class InsertTheme extends HttpServlet {
         int i = 0;
         try{
             String name_theme = request.getParameter("NAME_THEME");
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(connectionURL, "root", "");
             ThemeDAO dao = new ThemeDAO();
             dao.insertTheme(name_theme);
             i = 1; 

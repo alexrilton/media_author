@@ -89,8 +89,6 @@ public class InsertMedia extends HttpServlet {
             CountryDAO daoc = new CountryDAO();
             String media = request.getParameter("NAME_MEDIA");
             int id_country = daoc.getCountryId(request.getParameter("NAME_COUNTRY"));
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(connectionURL, "root", "");
             daom.insertMedia(media, id_country);
             i = 1;
             if(i!=0){

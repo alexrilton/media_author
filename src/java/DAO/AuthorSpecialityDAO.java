@@ -11,6 +11,7 @@ import Entities.Country;
 import Entities.Media;
 import Entities.Theme;
 import darethink.database_connection;
+import java.sql.Connection;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class AuthorSpecialityDAO extends database_connection{
     String sql;
     
     public AuthorSpecialityDAO() throws Exception{
-        conectar();
+        Connection conectar = conectar();
     }
     
     public AuthorSpeciality getAuthorSpeciality(Integer idAuthor, Integer idTheme, Integer idCountry, Integer idMedia) throws Exception{
