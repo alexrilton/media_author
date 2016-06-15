@@ -36,16 +36,17 @@ public class SpecialityDAO extends database_connection{
         return spec;
     }
     
-    public Speciality getSpecialityId(Integer idSpec) throws Exception{
-        sql = "SELECT * FROM speciality WHERE ID_SPEC = " + idSpec;
+    public int getSpecialityId(String nameSpec) throws Exception{
+        sql = "SELECT * FROM speciality WHERE NAME_SPEC ='" + nameSpec+"'";
         rs = stm.executeQuery(sql);
+        int id;
         if(rs.next()){
             spec.setIdSpec(rs.getInt(1));
-            spec.setNameSpec(rs.getString(2));
         }
-        return spec;
+        id = spec.getIdSpec();
+        return id;
     }
-    
+      
     public List<Speciality> listaSpeciality() throws Exception{
         List <Speciality> listaSpeciality = new ArrayList();
         sql = "SELECT * FROM speciality";

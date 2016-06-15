@@ -36,17 +36,17 @@ public class MediaDAO extends database_connection{
         return m;
     }
     
-    public Media getMediaId(Integer idMedia) throws Exception{
-        sql = "SELECT * FROM `media` WHERE `media`.`ID_MEDIA` = " + idMedia;
+    public int getMediaId(String nameMedia) throws Exception{
+        sql = "SELECT * FROM media WHERE NAME_MEDIA ='" + nameMedia+"'";
         rs = stm.executeQuery(sql);
+        int id;
         if(rs.next()){
             m.setIdMedia(rs.getInt(1));
-            m.setNameMedia(rs.getString(2));
-            m.setCountry((Country) rs.getObject(3));
         }
-        return m;
+        id = m.getIdMedia();
+        return id;
     }
-    
+       
     public List<Media> listaMedia() throws Exception{
         List<Media> listaMedia = new ArrayList();
         sql = "SELECT * FROM media GROUP BY NAME_MEDIA";
