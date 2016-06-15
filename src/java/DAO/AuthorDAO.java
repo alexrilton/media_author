@@ -8,6 +8,7 @@ package DAO;
 import Entities.Author;
 import Entities.Country;
 import darethink.database_connection;
+import java.sql.Connection;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class AuthorDAO extends database_connection{
     String sql;
     
     public AuthorDAO() throws Exception{
-        conectar();
+        Connection conectar = conectar();
     }
     
     public Author getAuthor(String nameAuthor) throws Exception{

@@ -12,15 +12,11 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 //import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -89,16 +85,12 @@ public class InsertCountry extends HttpServlet {
         response.setContentType("text/html");
 
         PrintWriter pw = response.getWriter();
-        String connectionURL = "jdbc:mysql://127.0.0.1:3306/author_media";
-        Connection connection;
         int i = 0;
         try{
             CountryDAO daoc = new CountryDAO();
             RegionDAO daor = new RegionDAO();
             String name_country = request.getParameter("NAME_COUNTRY");
             int id_region = daor.getRegionId(request.getParameter("NAME_REGION"));
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(connectionURL, "root", "");
             daoc.insertCountry(name_country, id_region);
             i = 1;
             if(i!=0){

@@ -8,6 +8,7 @@ package DAO;
 import Entities.Country;
 import Entities.Media;
 import darethink.database_connection;
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -21,7 +22,7 @@ public class MediaDAO extends database_connection{
     String sql;
     
     public MediaDAO() throws Exception{
-        conectar();
+        Connection conectar = conectar();
     }
     
     public Media getMediaName(String nameMedia) throws Exception{

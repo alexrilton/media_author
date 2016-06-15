@@ -81,16 +81,12 @@ public class InsertSpeciality extends HttpServlet {
         response.setContentType("text/html");
     
         PrintWriter pw = response.getWriter();
-        String connectionURL = "jdbc:mysql://127.0.0.1:3306/author_media";
-        Connection connection;
         int i = 0;
         try{
             SpecialityDAO daos = new SpecialityDAO();
             ThemeDAO daot = new ThemeDAO();
             String name_spec = request.getParameter("NAME_SPECIALITY");
             int id_theme = daot.getThemeId(request.getParameter("NAME_THEME"));
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(connectionURL, "root", "");
             ThemeDAO dao = new ThemeDAO();
             daos.insertSpeciality(name_spec, id_theme);
             i = 1; 

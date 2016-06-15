@@ -7,6 +7,7 @@ package DAO;
 
 import Entities.Theme;
 import darethink.database_connection;
+import java.sql.Connection;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class ThemeDAO extends database_connection{
     String sql;
     
     public ThemeDAO() throws Exception{
-        conectar();
+        Connection conectar = conectar();
     }
     
     public Theme getThemeName(String nameTheme) throws Exception{

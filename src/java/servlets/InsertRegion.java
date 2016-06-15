@@ -81,24 +81,9 @@ public class InsertRegion extends HttpServlet {
         int i = 0;
         try{
             String name_region = request.getParameter("NAME_REGION");
-            //Class.forName("com.mysql.jdbc.Driver");
-            //connection = DriverManager.getConnection(connectionURL, "root", "");
             RegionDAO dao = new RegionDAO();
             dao.insertRegion(name_region);
             i = 1;
-            /*int i = 0;
-            String name_region = request.getParameter("NAME_REGION");
-            int j = 0;
-            if(j==0){
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(connectionURL, "root", "");
-            PreparedStatement pst = connection.prepareStatement("insert into region(NAME_REGION) values (?)");
-            j++;
-            pst.setString(1,name_region);
-            i = pst.executeUpdate();
-            }*/
-            //pst.setString(1,name_region);
-            //int i = pst.executeUpdate();
             if(/*j!=0 &&*/ i!=0){  
                pw.write("<br>Record has been inserted");
                response.sendRedirect("/Media_author/region.jsp");
