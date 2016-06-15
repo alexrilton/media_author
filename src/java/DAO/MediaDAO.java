@@ -61,6 +61,21 @@ public class MediaDAO extends database_connection{
         return listaMedia;
     }
     
+    public List<Media> listaMediaByCountry(String nameCountry) throws Exception{
+        List<Media> listaMedia = new ArrayList();
+        sql = "SELECT m.ID_MEDIA, m.NAME_MEDIA, m.ID_COUNTRY FROM country c, media m WHERE c.NAME_COUNTRY = '" + nameCountry + "'AND c.ID_COUNTRY = m.ID_COUNTRY";
+        rs = stm.executeQuery(sql);
+        CountryDAO daoc = new CountryDAO();
+        while(rs.next()){
+            m = new Media();
+            m.setIdMedia(rs.getInt(1));
+            m.setNameMedia(rs.getString(2));
+            m.setCountry(daoc.getCountrybyID(rs.getInt(3)));
+            listaMedia.add(m);
+        }
+        return listaMedia;
+    }
+    
     public void insertMedia(String nameMedia, int idCountry) throws Exception{
         sql = "INSERT INTO media (NAME_MEDIA, ID_COUNTRY) VALUES (UPPER('" +nameMedia+  "')," +idCountry+  ")";
         stm.executeUpdate(sql);

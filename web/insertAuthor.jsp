@@ -80,7 +80,7 @@
                         <div>
                         <label>Media:</label>
                         <select name="NAME_MEDIA">
-                            <%
+                            <%/*
                                     MediaDAO media = new MediaDAO();
                                     List<Media> medias = new ArrayList();
                                     medias = media.listaMedia();
@@ -99,8 +99,28 @@
                                             out.println("</option>");
                                         }
                                         out.println("</optgroup>");
-                                    }
-                                %>    
+                                    }*/
+                            
+                                        CountryDAO country = new CountryDAO();
+                                        List<Country> countries = new ArrayList();
+                                        countries = country.listaCountry();
+                                        for (int j = 0; j < countries.size(); j++) {
+                                            out.println("<optgroup>");
+                                            out.println(" label='"+countries.get(j).getRegion().getNameRegion()+"'>");
+                                            out.println(" - ");
+                                            out.println(" label='"+countries.get(j).getNameCountry()+"'>");
+                                            MediaDAO media = new MediaDAO();
+                                            List<Media> medias = new ArrayList();
+                                            medias = media.listaMediaByCountry(countries.get(j).getNameCountry());
+                                            for (int i = 0; i < medias.size(); i++) {
+                                                out.println("<option>");
+                                                out.println( medias.get(i).getNameMedia());
+                                                //out.print(medias.get(i).getNameMedia());
+                                                out.println("</option>");
+                                            }
+                                            out.println("</optgroup>");
+                                        }
+                            %>
                         </select>
                         </div>
                         <div>
@@ -138,12 +158,12 @@
                                         out.println("<optgroup");
                                         out.println(" label='"+ regions.get(i).getNameRegion()+"'>");
                                         out.print("<div> "+regions.get(i).getNameRegion()+"</div>");
-                                        CountryDAO country = new CountryDAO();
-                                        List<Country> countries = new ArrayList();
-                                        countries = country.listaCountry(regions.get(i).getIdRegion());
-                                        for (int j = 0; j < countries.size(); j++) {
+                                        CountryDAO countryp = new CountryDAO();
+                                        List<Country> countriesp = new ArrayList();
+                                        countriesp = countryp.listaCountry(regions.get(i).getIdRegion());
+                                        for (int j = 0; j < countriesp.size(); j++) {
                                             out.println("<option>");
-                                            out.println(countries.get(j).getNameCountry());
+                                            out.println(countriesp.get(j).getNameCountry());
                                             out.println("</option>");
                                         }
                                         out.println("</optgroup>");
