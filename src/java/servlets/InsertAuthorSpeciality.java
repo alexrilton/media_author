@@ -6,7 +6,10 @@
 package servlets;
 
 import DAO.AuthorDAO;
+import DAO.AuthorSpecialityDAO;
 import DAO.CountryDAO;
+import DAO.MediaDAO;
+import DAO.SpecialityDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -19,8 +22,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author marce
  */
-@WebServlet(name = "InsertAuthor", urlPatterns = {"/InsertAuthor"})
-public class InsertAuthor extends HttpServlet {
+@WebServlet(name = "InsertAuthorSpeciality", urlPatterns = {"/InsertAuthorSpeciality"})
+public class InsertAuthorSpeciality extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +42,10 @@ public class InsertAuthor extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet InsertAuthor</title>");            
+            out.println("<title>Servlet InsertAuthorSpeciality</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet InsertAuthor at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet InsertAuthorSpeciality at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -81,11 +84,16 @@ public class InsertAuthor extends HttpServlet {
         PrintWriter pw = response.getWriter();
         int i = 0;
         try{
+            AuthorSpecialityDAO daoas = new AuthorSpecialityDAO();
             CountryDAO daoc = new CountryDAO();
             AuthorDAO daoa = new AuthorDAO();
-            String name_author = request.getParameter("NAME_AUTHOR");
+            SpecialityDAO daos = new SpecialityDAO();
+            MediaDAO daom = new MediaDAO();
+            int id_author = daoa.getAuthorId(request.getParameter("NAME_AUTHOR"));
+            int id_spec = daos.getSpecialityId(request.getParameter("NAME_SPEC"));
             int id_country = daoc.getCountryId(request.getParameter("NAME_COUNTRY"));
-            daoa.insertAuthor(name_author, id_country);
+            int id_media = daom.getMediaId(request.getParameter("NAME_MEDIA"));
+            daoas.insertAuthorSpeciality(id_author, id_spec, id_country, id_media);
             i = 1;
             if(i!=0){
                 pw.println("<br>Record has been inserted");

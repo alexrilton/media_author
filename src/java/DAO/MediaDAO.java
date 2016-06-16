@@ -36,20 +36,35 @@ public class MediaDAO extends database_connection{
         return m;
     }
     
-    public Media getMediaId(Integer idMedia) throws Exception{
-        sql = "SELECT * FROM `media` WHERE `media`.`ID_MEDIA` = " + idMedia;
+    public int getMediaId(String nameMedia) throws Exception{
+        sql = "SELECT * FROM media WHERE NAME_MEDIA ='" + nameMedia+"'";
         rs = stm.executeQuery(sql);
+        int id;
         if(rs.next()){
             m.setIdMedia(rs.getInt(1));
-            m.setNameMedia(rs.getString(2));
-            m.setCountry((Country) rs.getObject(3));
         }
-        return m;
+        id = m.getIdMedia();
+        return id;
     }
-    
+       
     public List<Media> listaMedia() throws Exception{
         List<Media> listaMedia = new ArrayList();
         sql = "SELECT * FROM media GROUP BY NAME_MEDIA";
+        rs = stm.executeQuery(sql);
+        CountryDAO daoc = new CountryDAO();
+        while(rs.next()){
+            m = new Media();
+            m.setIdMedia(rs.getInt(1));
+            m.setNameMedia(rs.getString(2));
+            m.setCountry(daoc.getCountrybyID(rs.getInt(3)));
+            listaMedia.add(m);
+        }
+        return listaMedia;
+    }
+    
+    public List<Media> listaMediaByCountry(String nameCountry) throws Exception{
+        List<Media> listaMedia = new ArrayList();
+        sql = "SELECT m.ID_MEDIA, m.NAME_MEDIA, m.ID_COUNTRY FROM country c, media m WHERE c.NAME_COUNTRY = '" + nameCountry + "'AND c.ID_COUNTRY = m.ID_COUNTRY";
         rs = stm.executeQuery(sql);
         CountryDAO daoc = new CountryDAO();
         while(rs.next()){

@@ -36,34 +36,34 @@ public class AuthorDAO extends database_connection{
         return a;
     }
     
-    public Author getAuthorId(Integer idAuthor) throws Exception{
-        sql = "SELECT * FROM `author` WHERE `author`.`ID_AUTHOR` = " + idAuthor;
+    public int getAuthorId(String nameAuthor) throws Exception{
+        sql = "SELECT * FROM author WHERE NAME_AUTHOR = '" + nameAuthor+"'";
         rs = stm.executeQuery(sql);
+        int id;
         if(rs.next()){
-            a = new Author();
             a.setIdAuthor(rs.getInt(1));
-            a.setNameAuthor(rs.getString(2));
-            a.setCountry((Country) rs.getObject(3));
         }
-        return a;
+        id = a.getIdAuthor();
+        return id;
     }
     
     public List<Author> listaAuthor() throws Exception{
         List <Author> listaAuthor = new LinkedList();
-        sql = "SELECT `* FROM `author`, `country` WHERE `author`.`ID_COUNTRY` = `country`.`ID_COUNTRY`";
+        sql = "SELECT * FROM author as a, country as c WHERE a.ID_COUNTRY = c.ID_COUNTRY";
         rs = stm.executeQuery(sql);
+        CountryDAO daoc = new CountryDAO();
         while (rs.next()){
             a = new Author();
             a.setIdAuthor(rs.getInt(1));
             a.setNameAuthor(rs.getString(2));
-            a.setCountry((Country) rs.getObject(3));
+            a.setCountry(daoc.getCountrybyID(rs.getInt(3)));
             listaAuthor.add(a);
         }
         return listaAuthor;
     }
     
-    public void insertAuthor(String nameAuthor, String nameCountry) throws Exception{
-        sql = "INSERT INTO `author`(ID_AUTHOR, NAME_AUTHOR, ID_COUNTRY) VALUES(?,?,(SELECT `country`.`ID_COUNTRY` FROM `country` WHERE UPPER(`country`.`NAME_COUNTRY`) = UPPER(?)))";
+    public void insertAuthor(String nameAuthor, int idCountry) throws Exception{
+        sql = "INSERT INTO author (NAME_AUTHOR, ID_COUNTRY) VALUES (UPPER('" +nameAuthor+  "')," +idCountry+  ")";
         stm.executeUpdate(sql);
     }
     
