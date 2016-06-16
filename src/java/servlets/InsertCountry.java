@@ -95,6 +95,7 @@ public class InsertCountry extends HttpServlet {
             i = 1;
             if(i!=0){
                 pw.println("<br>Record has been inserted");
+                response.sendRedirect("/Media_author/country.jsp");
                 i = 0;
             }
             else{

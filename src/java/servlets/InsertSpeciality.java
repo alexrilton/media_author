@@ -9,8 +9,6 @@ import DAO.SpecialityDAO;
 import DAO.ThemeDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -92,6 +90,7 @@ public class InsertSpeciality extends HttpServlet {
             i = 1; 
             if(i!=0){ 
                 pw.println("<br>Record has been inserted");
+                response.sendRedirect("/Media_author/speciality.jsp");
                 //j = 0;
                 i = 0;
             }

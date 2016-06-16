@@ -78,10 +78,7 @@ public class InsertTheme extends HttpServlet {
         //processRequest(request, response);
         
         response.setContentType("text/html");
-    
         PrintWriter pw = response.getWriter();
-        String connectionURL = "jdbc:mysql://127.0.0.1:3306/author_media";
-        Connection connection;
         int i = 0;
         try{
             String name_theme = request.getParameter("NAME_THEME");
@@ -90,7 +87,7 @@ public class InsertTheme extends HttpServlet {
             i = 1; 
             if(i!=0){ 
                 pw.println("<br>Record has been inserted");
-                //j = 0;
+                response.sendRedirect("/Media_author/theme.jsp");
                 i = 0;
             }
             else{

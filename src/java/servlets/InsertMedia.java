@@ -9,10 +9,7 @@ import DAO.CountryDAO;
 import DAO.MediaDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -81,8 +78,6 @@ public class InsertMedia extends HttpServlet {
         response.setContentType("text/html");
 
         PrintWriter pw = response.getWriter();
-        String connectionURL = "jdbc:mysql://127.0.0.1:3306/author_media";
-        Connection connection;
         int i = 0;
         try{
             MediaDAO daom = new MediaDAO();
@@ -93,6 +88,7 @@ public class InsertMedia extends HttpServlet {
             i = 1;
             if(i!=0){
                 pw.println("<br>Record has been inserted");
+                response.sendRedirect("/Media_author/media.jsp");
                 i = 0;
             }
             else{

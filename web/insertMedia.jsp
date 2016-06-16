@@ -51,7 +51,6 @@
                                     for (int i = 0; i < regions.size(); i++) {
                                         out.println("<optgroup");
                                         out.println(" label='"+ regions.get(i).getNameRegion()+"'>");
-                                        out.print("<div> "+regions.get(i).getNameRegion()+"</div>");
                                         CountryDAO country = new CountryDAO();
                                         List<Country> countries = new ArrayList();
                                         countries = country.listaCountry(regions.get(i).getIdRegion());
