@@ -1,16 +1,14 @@
 <%-- 
-    Document   : telaInicial
-    Created on : 23/05/2016, 15:55:23
-    Author     : alex
+    Document   : authorspec
+    Created on : 17-jun-2016, 16:29:17
+    Author     : marce
 --%>
-<c:if test="condition">
-    
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>DARE-THINK: Autor</title>
+        <title>DARE-THINK: Autor - Speciality</title>
         <link rel='stylesheet' href='style.css' type='text/css'>
     </head>
     <body>
@@ -23,14 +21,14 @@
             <div class="content" style="width:25%; float:left">
 		<div class="title">Menu</div>
                 <ul>
-                    <li><a href="insertAuthor.jsp">Insert Author</a></li>
-                    <li><a href="editAuthor.jsp">Edit Author</a></li>
-                    <li><a href="deleteAuthor.jsp">Delete Author</a></li> 
+                    <li><a href="insertAuthorSpeciality.jsp">Insert Author - Speciality</a></li>
+                    <li><a href="editAuthorSpeciality.jsp">Edit Author - Speciality</a></li>
+                    <li><a href="deleteAuthorSpeciality.jsp">Delete Author - Speciality</a></li> 
                     <li style="border-bottom: 5px solid #dfdfdf"><a href="home.jsp">Back</a></li>
                 </ul>         
             </div>
             <div class="content" style="width:70%; float:right; margin-right: 7px">
-		<div class="title">Author</div>
+		<div class="title">Author - Speciality</div>
                 
             </div>
 	</div>
@@ -38,4 +36,3 @@
         <div id="footer"></div>
     </body>
 </html>
-</c:if>
