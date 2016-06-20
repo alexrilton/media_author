@@ -21,7 +21,7 @@
     </head>
     <body>
         <div id="header1">
-            <div class="logo"><img id="logo" src="img/medthor.png" alt="pinguim"/></div>
+            <div class="logo"><a href="home.jsp"><img id="logo" src="img/medthor.png" alt="pinguim" /></a></div>
         </div>
         <div id="header2"></div>
         <br>

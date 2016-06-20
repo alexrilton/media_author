@@ -22,7 +22,7 @@
         <body>
 
             <div id="header1">
-                <div class="logo"><img id="logo" src="img/medthor.png" alt="pinguim"/></div>
+                <div class="logo"><a href="home.jsp"><img id="logo" src="img/medthor.png" alt="pinguim" /></a></div>
             </div>
             <div id="header2"></div>
             <br>
@@ -32,6 +32,7 @@
                     <ul>
                         <li><a href="insertCountry.jsp">Insert Country</a></li>
                         <li><a href="editCountry.jsp">Edit Country</a></li>
+                        <li><a href="deleteCountry.jsp">Delete Country</a></li>
                         <li><a href="region.jsp">Region</a></li>
                         <li style="border-bottom: 5px solid #dfdfdf"><a href="home.jsp">Back</a></li>
                     </ul>         

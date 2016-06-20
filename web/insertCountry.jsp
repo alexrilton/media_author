@@ -23,7 +23,7 @@
     </head>
     <body>
         <div id="header1">
-            <div class="logo"><img id="logo" src="img/medthor.png" alt="pinguim"/></div>
+            <div class="logo"><a href="home.jsp"><img id="logo" src="img/medthor.png" alt="pinguim" /></a></div>
         </div>
 	<div id="header2"></div>
         <br>
@@ -48,11 +48,8 @@
                             <select name="NAME_REGION">
                              <%
                                     RegionDAO region = new RegionDAO();
-                                    region.conectar();
                                     List<Region> regions = new ArrayList();
                                     regions = region.listaRegion();
-                                    region.connection.close();
-                                    region = null;
                                     for (int i = 0; i < regions.size(); i++) {
                                         out.println("<option>");
                                         out.println(regions.get(i).getNameRegion());

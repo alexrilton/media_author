@@ -7,7 +7,6 @@ package DAO;
 
 import Entities.Theme;
 import darethink.database_connection;
-import java.sql.Connection;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -20,10 +19,10 @@ public class ThemeDAO extends database_connection{
     String sql;
     
     public ThemeDAO() throws Exception{
-        conectar();
     }
     
     public Theme getThemeName(String nameTheme) throws Exception{
+        this.conectar();
         sql = "SELECT * FROM theme WHERE UPPER(NAME_THEME) LIKE UPPER('" +nameTheme+  "')";
         rs = stm.executeQuery(sql);
         if(rs.next()){
@@ -31,20 +30,24 @@ public class ThemeDAO extends database_connection{
             t.setNameTheme(rs.getString(2));
             //st.setSpec((Speciality) rs.getObject(3));
         }
+        this.connection.close();
         return t;
     }
     
     public Theme getThemebyId(Integer idTheme) throws Exception{
+        this.conectar();
         sql = "SELECT * FROM theme WHERE ID_THEME = " + idTheme;
         rs = stm.executeQuery(sql);
         if(rs.next()){
             t.setIdTheme(rs.getInt(1));
             t.setNameTheme(rs.getString(2));
         }
+        this.connection.close();
         return t;
     }
        
     public int getThemeId(String nameTheme) throws Exception{
+        this.conectar();
         sql = "SELECT ID_THEME FROM theme WHERE NAME_THEME ='" +nameTheme+"'";
         rs = stm.executeQuery(sql);
         int id;
@@ -53,10 +56,12 @@ public class ThemeDAO extends database_connection{
             //st.setSpec((Speciality) rs.getObject(3));
         }
         id = t.getIdTheme();
+        this.connection.close();
         return id;
     }
     
     public List<Theme> listaTheme() throws Exception{
+        this.conectar();
         List<Theme> listaTheme = new LinkedList();
         sql = "SELECT * FROM `theme`";
         rs = stm.executeQuery(sql);
@@ -67,27 +72,36 @@ public class ThemeDAO extends database_connection{
             //st.setSpec((Speciality) rs.getObject(3));
             listaTheme.add(t);
         }
+        this.connection.close();
         return listaTheme;
     }
     
     public void insertTheme(String nameTheme) throws Exception{
+        this.conectar();
         sql = "INSERT INTO theme (NAME_THEME) VALUES(UPPER ('" +nameTheme+  "'))";
         stm.executeUpdate(sql);
+        this.connection.close();
     }
     
     public void changeTheme(String nameTheme) throws Exception{
+        this.conectar();
         sql = "UPDATE `theme` SET NAME_THEME = ? WHERE (SELECT * FROM `specific_theme` WHERE UPPER(`specific_theme`.`NAME_THEME`) = UPPER(?))";
         stm.executeUpdate(sql);
+        this.connection.close();
     }
     
     public void deleteThemeName(String nameTheme) throws Exception{
+        this.conectar();
         sql = "DELETE FROM `theme` WHERE `theme`.`NAME_THEME` LIKE " + nameTheme;
         stm.executeUpdate(sql);
+        this.connection.close();
     }
     
     public void deleteThemeId(Integer idTheme) throws Exception{
+        this.conectar();
         sql = "DELETE FROM `theme` WHERE `theme`.`NAME_THEME` LIKE " + idTheme;
         stm.executeUpdate(sql);
+        this.connection.close();
     }
     
 }

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : insertTheme
-    Created on : 06-jun-2016, 17:39:49
+    Document   : deleteTheme
+    Created on : 17-jun-2016, 16:01:22
     Author     : marce
 --%>
 
@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>DARE-THINK: Insert Specific Theme</title>
+        <title>DARE-THINK: Delete Theme</title>
         <link rel='stylesheet' href='style.css' type='text/css'>
     </head>
     <body>
@@ -26,19 +26,16 @@
                 </ul>         
             </div>
             <div class="content" style="width:70%; float:right; margin-right: 7px">
-		<div class="title">Insert Specific Theme</div>
+		<div class="title">Delete Theme</div>
                 </br></br>
-                <form  id="simpleform" action="/Media_author/InsertTheme" method="post">
+                <form id="simpleform" action="/Media_author/DeleteTheme" method="post">
                     <fieldset>
-                        <legend>Specific Theme</legend>
-                        <div>
-                            <label>Name:</label>
-                            <input type="text" name="NAME_THEME" size="auto"/>
-                        </div>
+                        <legend></legend>
+                       
                     </fieldset>
                     <br>
-                    <input class="button" type="reset" value="Clean" style="font-size: 16px;">
-                    <input class="button" type="submit" value="Insert" style="font-size: 16px;">
+                    <input class="button" type="button" value="Cancel" style="font-size: 16px;" onclick="window.location.href='theme.jsp';"/>
+                    <input class="button" type="submit" value="Delete" style="font-size: 16px;">
                 </form>	
             </div>
 	</div>

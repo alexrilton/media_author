@@ -17,3 +17,4 @@ nbproject/
 *.ear
 /web/index.html
 /src/java/NewServlet.java
+/build/

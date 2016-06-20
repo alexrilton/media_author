@@ -8,7 +8,6 @@ package DAO;
 import Entities.Country;
 import Entities.Media;
 import darethink.database_connection;
-import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,10 +20,10 @@ public class MediaDAO extends database_connection{
     String sql;
     
     public MediaDAO() throws Exception{
-        conectar();
     }
     
     public Media getMediaName(String nameMedia) throws Exception{
+        this.conectar();
         sql = "SELECT * FROM `media` WHERE `media`.`NAME_MEDIA` LIKE " + nameMedia;
         rs = stm.executeQuery(sql);
         if(rs.next()){
@@ -32,10 +31,12 @@ public class MediaDAO extends database_connection{
             m.setNameMedia(rs.getString(2));
             m.setCountry((Country) rs.getObject(3));
         }
+        this.connection.close();
         return m;
     }
     
     public int getMediaId(String nameMedia) throws Exception{
+        this.conectar();
         sql = "SELECT * FROM media WHERE NAME_MEDIA ='" + nameMedia+"'";
         rs = stm.executeQuery(sql);
         int id;
@@ -43,10 +44,12 @@ public class MediaDAO extends database_connection{
             m.setIdMedia(rs.getInt(1));
         }
         id = m.getIdMedia();
+        this.connection.close();
         return id;
     }
        
     public List<Media> listaMedia() throws Exception{
+        this.conectar();
         List<Media> listaMedia = new ArrayList();
         sql = "SELECT * FROM media GROUP BY NAME_MEDIA";
         rs = stm.executeQuery(sql);
@@ -58,10 +61,12 @@ public class MediaDAO extends database_connection{
             m.setCountry(daoc.getCountrybyID(rs.getInt(3)));
             listaMedia.add(m);
         }
+        this.connection.close();
         return listaMedia;
     }
     
     public List<Media> listaMediaByCountry(String nameCountry) throws Exception{
+        this.conectar();
         List<Media> listaMedia = new ArrayList();
         sql = "SELECT m.ID_MEDIA, m.NAME_MEDIA, m.ID_COUNTRY FROM country c, media m WHERE c.NAME_COUNTRY = '" + nameCountry + "'AND c.ID_COUNTRY = m.ID_COUNTRY";
         rs = stm.executeQuery(sql);
@@ -73,26 +78,35 @@ public class MediaDAO extends database_connection{
             m.setCountry(daoc.getCountrybyID(rs.getInt(3)));
             listaMedia.add(m);
         }
+        this.connection.close();
         return listaMedia;
     }
     
     public void insertMedia(String nameMedia, int idCountry) throws Exception{
+        this.conectar();
         sql = "INSERT INTO media (NAME_MEDIA, ID_COUNTRY) VALUES (UPPER('" +nameMedia+  "')," +idCountry+  ")";
         stm.executeUpdate(sql);
+        this.connection.close();
     }
     
     public void changeMedia(String nameMedia) throws Exception{
+        this.conectar();
         sql = "UPDATE `media` SET NAME_MEDIA = ? WHERE (SELECT * FROM `media` WHERE UPPER(`media`.`NAME_MEDIA`) = UPPER(?))";
         stm.executeUpdate(sql);
+        this.connection.close();
     }
     
     public void deleteMediaName(String nameMedia) throws Exception{
+        this.conectar();
         sql = "DELETE FROM `media` WHERE `media`.`NAME_MEDIA` LIKE " + nameMedia;
         stm.executeUpdate(sql);
+        this.connection.close();
     }
     
     public void deleteMediaId(Integer idMedia) throws Exception{
+        this.conectar();
         sql = "DELETE FROM `media` WHERE `media`.`ID_MEDIA` = " + idMedia;
         stm.executeUpdate(sql);
+        this.connection.close();
     }
 }

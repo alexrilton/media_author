@@ -23,7 +23,7 @@
     </head>
     <body>
         <div id="header1">
-            <div class="logo"><img id="logo" src="img/medthor.png" alt="pinguim"/></div>
+            <div class="logo"><a href="home.jsp"><img id="logo" src="img/medthor.png" alt="pinguim" /></a></div>
         </div>
 	<div id="header2"></div>
         <br>
@@ -33,6 +33,7 @@
                 <ul>
                     <li><a href="insertTheme.jsp">Insert Theme</a></li>
                     <li><a href="editTheme.jsp">Edit Theme</a></li>
+                    <li><a href="deleteTheme.jsp">Delete Theme</a></li>
                     <li style="border-bottom: 5px solid #dfdfdf"><a href="speciality.jsp">Back</a></li>
                 </ul>         
             </div>

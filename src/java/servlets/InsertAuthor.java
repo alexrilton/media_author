@@ -39,7 +39,7 @@ public class InsertAuthor extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet InsertAuthor</title>");            
+            out.println("<title>Servlet InsertAuthor</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet InsertAuthor at " + request.getContextPath() + "</h1>");
@@ -75,29 +75,18 @@ public class InsertAuthor extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-        
+
         response.setContentType("text/html");
 
         PrintWriter pw = response.getWriter();
-        int i = 0;
-        try{
+        try {
             CountryDAO daoc = new CountryDAO();
             AuthorDAO daoa = new AuthorDAO();
             String name_author = request.getParameter("NAME_AUTHOR");
             int id_country = daoc.getCountryId(request.getParameter("NAME_COUNTRY"));
             daoa.insertAuthor(name_author, id_country);
-            daoa.connection.close();
-            i = 1;
-            if(i!=0){
-                pw.println("<br>Record has been inserted");
-                response.sendRedirect("/Media_author/author.jsp");
-                i = 0;
-            }
-            else{
-                pw.println("failed to insert the data");
-            }
-        }
-        catch (Exception e){
+            response.sendRedirect("/Media_author/author.jsp");
+        } catch (Exception e) {
             pw.println(e);
         }
     }

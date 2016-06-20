@@ -2,6 +2,14 @@
 <web-app id="WebApp_ID" version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <display-name>DARE-THINK: Media_Author</display-name>
     <servlet>
+        <servlet-name>InsertAuthor</servlet-name>
+        <servlet-class>servlets.InsertAuthor</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteAuthor</servlet-name>
+        <servlet-class>servlets.DeleteAuthor</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>app1conn</servlet-name>
         <servlet-class>app1conn</servlet-class>
     </servlet>
@@ -48,6 +56,14 @@
     <servlet-mapping>
         <servlet-name>InsertMedia</servlet-name>
         <url-pattern>/InsertMedia</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertAuthor</servlet-name>
+        <url-pattern>/InsertAuthor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteAuthor</servlet-name>
+        <url-pattern>/DeleteAuthor</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>home.jsp</welcome-file>

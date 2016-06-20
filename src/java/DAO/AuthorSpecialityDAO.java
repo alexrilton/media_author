@@ -9,9 +9,8 @@ import Entities.Author;
 import Entities.AuthorSpeciality;
 import Entities.Country;
 import Entities.Media;
-import Entities.Theme;
+import Entities.Speciality;
 import darethink.database_connection;
-import java.sql.Connection;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -25,7 +24,6 @@ public class AuthorSpecialityDAO extends database_connection {
     String sql;
 
     public AuthorSpecialityDAO() throws Exception {
-        conectar();
     }
 
     public AuthorSpeciality getAuthorSpeciality(Integer idAuthor, Integer idTheme, Integer idCountry, Integer idMedia) throws Exception {
@@ -115,10 +113,6 @@ public class AuthorSpecialityDAO extends database_connection {
         return listaAS;
     }
 
-    /* public void insertAuthorSpeciality(String nameAuthor, String nameMedia, String nameSpec, String nameTheme, String nameRegion, String nameCountry) throws Exception{
-        sql = "INSERT INTO `author_speciality`(ID_AUTHOR, ID_THEME, ID_COUNTRY, ID_MEDIA) VALUES((SELECT `author`.`ID_AUTHOR` FROM `author` WHERE UPPER(`author`.`NAME_AUTHOR`) = UPPER(?)), (SELECT `specific_theme`.`ID_THEME` FROM `specific_theme` WHERE UPPER(`specifc_theme`.`NAME_THEME`) = UPPER(?)), (SELECT `country`.`ID_COUNTRY` FROM `country` WHERE UPPER(`country`.`NAME_COUNTRY`) = UPPER(?)), (SELECT `media`.`ID_MEDIA` FROM `media` WHERE UPPER(`media`.`NAME_MEDIA`) = UPPER(?)))";
-        stm.executeUpdate(sql);
-    }*/
     public void insertAuthorSpeciality(int idAuthor, int idSpec, int idCountry, int idMedia) throws Exception {
         sql = "INSERT INTO author_speciality (ID_AUTHOR, ID_SPEC, ID_COUNTRY, ID_MEDIA) VALUES (" + idAuthor + ", " + idSpec + ", " + idCountry + ", " + idMedia + ")";
         stm.executeUpdate(sql);

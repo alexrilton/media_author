@@ -25,7 +25,7 @@
     <body>
         
         <div id="header1">
-            <div class="logo"><img id="logo" src="img/medthor.png" alt="pinguim"/></div>
+            <div class="logo"><a href="home.jsp"><img id="logo" src="img/medthor.png" alt="pinguim" /></a></div>
         </div>
 	<div id="header2"></div>
         <br>
@@ -35,6 +35,7 @@
                 <ul>
                     <li><a href="insertSpeciality.jsp">Insert Speciality</a></li>
                     <li><a href="editSpeciality.jsp">Edit Speciality</a></li>
+                    <li><a href="deleteSpeciality.jsp">Delete Speciality</a></li>
                     <li><a href="theme.jsp">Theme</a></li>
                     <li style="border-bottom: 5px solid #dfdfdf"><a href="home.jsp">Back</a></li>
                 </ul>         

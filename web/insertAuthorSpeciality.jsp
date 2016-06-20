@@ -29,7 +29,7 @@
     <body>
         
         <div id="header1">
-            <div class="logo"><img id="logo" src="img/medthor.png" alt="pinguim"/></div>
+            <div class="logo"><a href="home.jsp"><img id="logo" src="img/medthor.png" alt="pinguim" /></a></div>
         </div>
 	<div id="header2"></div>
         <br>
@@ -92,10 +92,13 @@
                                         CountryDAO country = new CountryDAO();
                                         List<Country> countries = new ArrayList();
                                         countries = country.listaCountry();
+                                        //RegionDAO region = new RegionDAO();
+                                        //List<Region> regions = new ArrayList();
+                                        //regions = region.listaRegion();
                                         for (int j = 0; j < countries.size(); j++) {
                                             out.println("<optgroup");
                                             out.println(" label='"+countries.get(j).getRegion().getNameRegion()+" - "+countries.get(j).getNameCountry()+"'>");
-                                            // Com erro: Todos estão para north america
+                                            // Com erro: Todos estão para north america, tentar lista região
                                             MediaDAO media = new MediaDAO();
                                             List<Media> medias = new ArrayList();
                                             medias = media.listaMediaByCountry(countries.get(j).getNameCountry());
