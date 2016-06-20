@@ -20,7 +20,7 @@ public class ThemeDAO extends database_connection{
     String sql;
     
     public ThemeDAO() throws Exception{
-        Connection conectar = conectar();
+        conectar();
     }
     
     public Theme getThemeName(String nameTheme) throws Exception{

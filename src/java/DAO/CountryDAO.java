@@ -21,7 +21,7 @@ public class CountryDAO extends database_connection{
     String sql;
     
     public CountryDAO() throws Exception{
-        Connection conectar = conectar();
+        conectar();
     }
     
     public Country getCountryName(String nameCountry) throws Exception{

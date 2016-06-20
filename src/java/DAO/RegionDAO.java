@@ -7,7 +7,6 @@ package DAO;
 
 import Entities.Region;
 import darethink.database_connection;
-import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +19,6 @@ public class RegionDAO extends database_connection{
     String sql;
     
     public RegionDAO() throws Exception{
-        Connection conectar = conectar();
     }
     
     public Region getRegion(String nameRegion) throws Exception{
@@ -80,6 +78,7 @@ public class RegionDAO extends database_connection{
     }
     
     public void insertRegion(String nameRegion) throws Exception{
+        conectar();
         sql = "INSERT INTO region (NAME_REGION) values (UPPER('" +nameRegion+  "'))";
         stm.executeUpdate(sql);
     }

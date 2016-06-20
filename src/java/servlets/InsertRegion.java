@@ -80,6 +80,7 @@ public class InsertRegion extends HttpServlet {
             String name_region = request.getParameter("NAME_REGION");
             RegionDAO dao = new RegionDAO();
             dao.insertRegion(name_region);
+            dao.connection.close();
             i = 1;
             if(/*j!=0 &&*/ i!=0){  
                pw.write("<br>Record has been inserted");

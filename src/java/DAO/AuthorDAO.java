@@ -21,7 +21,7 @@ public class AuthorDAO extends database_connection{
     String sql;
     
     public AuthorDAO() throws Exception{
-        Connection conectar = conectar();
+        conectar();
     }
     
     public Author getAuthor(String nameAuthor) throws Exception{

@@ -10,7 +10,6 @@ import Entities.Theme;
 import darethink.database_connection;
 import java.sql.Connection;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -22,7 +21,7 @@ public class SpecialityDAO extends database_connection{
     String sql;
     
     public SpecialityDAO() throws Exception{
-        Connection conectar = conectar();
+        conectar();
     }
     
     public Speciality getSpecialityName(String nameSpec) throws Exception{

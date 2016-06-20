@@ -86,9 +86,11 @@ public class InsertAuthor extends HttpServlet {
             String name_author = request.getParameter("NAME_AUTHOR");
             int id_country = daoc.getCountryId(request.getParameter("NAME_COUNTRY"));
             daoa.insertAuthor(name_author, id_country);
+            daoa.connection.close();
             i = 1;
             if(i!=0){
                 pw.println("<br>Record has been inserted");
+                response.sendRedirect("/Media_author/author.jsp");
                 i = 0;
             }
             else{
