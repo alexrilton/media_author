@@ -112,8 +112,10 @@ public class RegionDAO extends database_connection{
     }
     
     public void deleteRegionName(String nameRegion) throws Exception{
-        sql = "DELETE FROM `region` WHERE `region`.`NAME_REGION` LIKE " + nameRegion;
+        this.conectar();
+        sql = "DELETE FROM `region` JOIN `country` ON `region`.`ID_REGION` = `country`.`ID_REGION` WHERE `country`.`ID_REGION` IS NULL AND `region`.`NAME_REGION` = '" + nameRegion + "'";
         stm.executeUpdate(sql);
+        this.connection.close();
     }
     
     public void deleteRegionId(Integer idRegion) throws Exception{

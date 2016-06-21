@@ -128,7 +128,7 @@ public class CountryDAO extends database_connection{
     
     public void deleteCountryName(String nameCountry) throws Exception{
         this.conectar();
-        sql = "DELETE FROM `country` WHERE `country`.`NAME_COUNTRY` LIKE " + nameCountry;
+        sql = "DELETE FROM `country` WHERE `country`.`NAME_COUNTRY` = '" + nameCountry+"'";
         stm.executeUpdate(sql);
         this.connection.close();
     }
