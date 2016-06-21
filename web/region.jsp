@@ -3,12 +3,13 @@
     Created on : 23/05/2016, 15:55:23
     Author     : alex
 --%>
+<%@page import="DAO.RegionDAO"%>
 <c:if test="condition">
     <%@page import="java.sql.*" %>
     <%
-        Class.forName("com.mysql.jdbc.Driver");
-        Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/author_media", "root", "");
-        Statement Estamento = conexion.createStatement();
+        RegionDAO region = new RegionDAO();
+        region.conectar();
+        Statement Estamento = region.connection.createStatement();
     %>
     <%@page contentType="text/html" pageEncoding="UTF-8"%>
     <!DOCTYPE html>
@@ -54,7 +55,7 @@
                             out.println("</table>");
                             rs.close();
                             Estamento.close();
-                            conexion.close();
+                            region.connection.close();
                         %>
                     </div>
                 </div>
