@@ -113,7 +113,7 @@ public class RegionDAO extends database_connection{
     
     public void deleteRegionName(String nameRegion) throws Exception{
         this.conectar();
-        sql = "DELETE FROM `region` JOIN `country` ON `region`.`ID_REGION` = `country`.`ID_REGION` WHERE `country`.`ID_REGION` IS NULL AND `region`.`NAME_REGION` = '" + nameRegion + "'";
+        sql = "DELETE FROM `region` WHERE `region`.`NAME_REGION` = '" + nameRegion+"'";
         stm.executeUpdate(sql);
         this.connection.close();
     }

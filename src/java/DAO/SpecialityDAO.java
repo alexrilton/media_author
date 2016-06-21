@@ -52,12 +52,14 @@ public class SpecialityDAO extends database_connection {
     public List<Speciality> listaSpeciality() throws Exception {
         this.conectar();
         List<Speciality> listaSpeciality = new ArrayList();
-        sql = "SELECT * FROM speciality";
+        sql = "SELECT * FROM `speciality`";
         rs = stm.executeQuery(sql);
+        ThemeDAO daot = new ThemeDAO();
         while (rs.next()) {
             spec = new Speciality();
             spec.setIdSpec(rs.getInt(1));
-            spec.setNameSpec(rs.getNString(2));
+            spec.setNameSpec(rs.getString(2));
+            spec.setTheme(daot.getThemebyId(rs.getInt(3)));
             listaSpeciality.add(spec);
         }
         this.connection.close();
@@ -103,7 +105,7 @@ public class SpecialityDAO extends database_connection {
 
     public void deleteSpecialityName(String nameSpec) throws Exception {
         this.conectar();
-        sql = "DELETE FROM `speciality` WHERE `speciality`.`NAME_SPEC` LIKE " + nameSpec;
+        sql = "DELETE FROM `speciality` WHERE `speciality`.`NAME_SPEC` = '" + nameSpec +"'";
         stm.executeUpdate(sql);
         this.connection.close();
     }
