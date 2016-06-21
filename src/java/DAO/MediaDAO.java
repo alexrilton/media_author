@@ -89,16 +89,16 @@ public class MediaDAO extends database_connection{
         this.connection.close();
     }
     
-    public void changeMedia(String nameMedia) throws Exception{
+    public void updateMedia(String nameMediaOld, String nameMedia, int idCountry) throws Exception{
         this.conectar();
-        sql = "UPDATE `media` SET NAME_MEDIA = ? WHERE (SELECT * FROM `media` WHERE UPPER(`media`.`NAME_MEDIA`) = UPPER(?))";
+        sql = "UPDATE `media` SET NAME_MEDIA = (UPPER('"+nameMedia+"')), ID_COUNTRY = " +idCountry+" WHERE `media`.`NAME_MEDIA` =(UPPER('"+nameMediaOld+"'))";
         stm.executeUpdate(sql);
         this.connection.close();
     }
     
     public void deleteMediaName(String nameMedia) throws Exception{
         this.conectar();
-        sql = "DELETE FROM `media` WHERE `media`.`NAME_MEDIA` LIKE " + nameMedia;
+        sql = "DELETE FROM `media` WHERE `media`.`NAME_MEDIA` ='" + nameMedia+"'";
         stm.executeUpdate(sql);
         this.connection.close();
     }

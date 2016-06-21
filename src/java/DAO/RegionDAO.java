@@ -61,7 +61,7 @@ public class RegionDAO extends database_connection{
     
     public int getRegionId(String nameRegion) throws Exception{
         this.conectar();
-        sql = "SELECT ID_REGION FROM region WHERE NAME_REGION ='" +nameRegion+"'";
+        sql = "SELECT ID_REGION FROM region WHERE NAME_REGION ='"+nameRegion+"'";
         rs = stm.executeQuery(sql);
         int id;
         if(rs.next()){

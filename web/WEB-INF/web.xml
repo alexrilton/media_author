@@ -33,6 +33,26 @@
         <servlet-name>InsertMedia</servlet-name>
         <servlet-class>servlets.InsertMedia</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditAuthor</servlet-name>
+        <servlet-class>servlets.EditAuthor</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditMedia</servlet-name>
+        <servlet-class>servlets.EditMedia</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteMedia</servlet-name>
+        <servlet-class>servlets.DeleteMedia</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditTheme</servlet-name>
+        <servlet-class>servlets.EditTheme</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteTheme</servlet-name>
+        <servlet-class>servlets.DeleteTheme</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>app1conn</servlet-name>
         <url-pattern>/app1conn</url-pattern>
@@ -64,6 +84,26 @@
     <servlet-mapping>
         <servlet-name>DeleteAuthor</servlet-name>
         <url-pattern>/DeleteAuthor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditAuthor</servlet-name>
+        <url-pattern>/EditAuthor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditMedia</servlet-name>
+        <url-pattern>/EditMedia</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteMedia</servlet-name>
+        <url-pattern>/DeleteMedia</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditTheme</servlet-name>
+        <url-pattern>/EditTheme</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteTheme</servlet-name>
+        <url-pattern>/DeleteTheme</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>home.jsp</welcome-file>

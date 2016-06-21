@@ -83,16 +83,16 @@ public class ThemeDAO extends database_connection{
         this.connection.close();
     }
     
-    public void changeTheme(String nameTheme) throws Exception{
+    public void updateTheme(String nameThemeOld, String nameTheme) throws Exception{
         this.conectar();
-        sql = "UPDATE `theme` SET NAME_THEME = ? WHERE (SELECT * FROM `specific_theme` WHERE UPPER(`specific_theme`.`NAME_THEME`) = UPPER(?))";
+        sql = "UPDATE `theme` SET NAME_THEME = (UPPER('"+nameTheme+"')) WHERE `theme`.`NAME_THEME` =(UPPER('"+nameThemeOld+"'))";
         stm.executeUpdate(sql);
         this.connection.close();
     }
     
     public void deleteThemeName(String nameTheme) throws Exception{
         this.conectar();
-        sql = "DELETE FROM `theme` WHERE `theme`.`NAME_THEME` LIKE " + nameTheme;
+        sql = "DELETE FROM `theme` WHERE `theme`.`NAME_THEME` ='" + nameTheme+"'";
         stm.executeUpdate(sql);
         this.connection.close();
     }

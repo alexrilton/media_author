@@ -1,7 +1,7 @@
 <%-- 
-    Document   : deleteMedia
+    Document   : editMedia
     Created on : 17-jun-2016, 15:59:41
-    Media     : marce
+    Author     : Alex
 --%>
 
 <%@page import="Entities.Media"%>
@@ -17,7 +17,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>DARE-THINK: Delete Media</title>
+        <title>DARE-THINK: Edit Media</title>
         <link rel='stylesheet' href='style.css' type='text/css'>
     </head>
     <body>
@@ -34,14 +34,14 @@
                 </ul>         
             </div>
             <div class="content" style="width:70%; float:right; margin-right: 7px">
-                <div class="title">Delete Media</div>
+                <div class="title">Edit Media</div>
                 </br></br>
-                <form id="simpleform" action="/Media_author/DeleteMedia" method="post">
+                <form id="simpleform" action="/Media_author/EditMedia" method="post">
                     <fieldset>
                         <legend>Media</legend>
                         <div>
                             <label>Name:</label>
-                            <select name="NAME_MEDIA"/>
+                            <select name="NAME_MEDIA_OLD"/>
                             <%
                                 MediaDAO media = new MediaDAO();
                                 List<Media> medias = new ArrayList();
@@ -55,9 +55,40 @@
                             </select>
                         </div>
                     </fieldset>
+                     <fieldset>
+                        <legend>New data</legend>
+                        <div>
+                            <label>Name:</label>
+                            <input type="text" name="NAME_MEDIA" size="auto"/>
+                        </div>
+                        <div>                             
+                            <label>Country:</label>
+                            <select name="NAME_COUNTRY">
+                                <%
+                                    RegionDAO region = new RegionDAO();
+                                    List<Region> regions = new ArrayList();
+                                    regions = region.listaRegion();
+                                    for (int i = 0; i < regions.size(); i++) {
+                                        out.println("<optgroup");
+                                        out.println(" label='"+ regions.get(i).getNameRegion()+"'>");
+                                        out.print("<div> "+regions.get(i).getNameRegion()+"</div>");
+                                        CountryDAO country = new CountryDAO();
+                                        List<Country> countries = new ArrayList();
+                                        countries = country.listaCountry(regions.get(i).getIdRegion());
+                                        for (int j = 0; j < countries.size(); j++) {
+                                            out.println("<option>");
+                                            out.println(countries.get(j).getNameCountry());
+                                            out.println("</option>");
+                                        }
+                                        out.println("</optgroup>");
+                                    }
+                                %>    
+                            </select>
+                        </div>
+                    </fieldset>       
                     <br>
                     <input class="button" type="button" value="Cancel" style="font-size: 16px;" onclick="window.location.href = 'media.jsp';"/>
-                    <input class="button" type="submit" value="Delete" style="font-size: 16px;">
+                    <input class="button" type="submit" value="Edit" style="font-size: 16px;">
                 </form>	
             </div>
         </div>

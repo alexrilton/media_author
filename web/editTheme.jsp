@@ -1,9 +1,11 @@
 <%-- 
-    Document   : deleteMedia
+    Document   : editTheme
     Created on : 17-jun-2016, 15:59:41
-    Media     : marce
+    Author     : Alex
 --%>
 
+<%@page import="Entities.Theme"%>
+<%@page import="DAO.ThemeDAO"%>
 <%@page import="Entities.Media"%>
 <%@page import="DAO.MediaDAO"%>
 <%@page import="Entities.Country"%>
@@ -17,7 +19,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>DARE-THINK: Delete Media</title>
+        <title>DARE-THINK: Edit Theme</title>
         <link rel='stylesheet' href='style.css' type='text/css'>
     </head>
     <body>
@@ -30,34 +32,42 @@
             <div class="content" style="width:25%; float:left">
                 <div class="title">Menu</div>
                 <ul>
-                    <li style="border-bottom: 5px solid #dfdfdf"><a href="media.jsp">Back</a></li>
+                    <li style="border-bottom: 5px solid #dfdfdf"><a href="theme.jsp">Back</a></li>
                 </ul>         
             </div>
             <div class="content" style="width:70%; float:right; margin-right: 7px">
-                <div class="title">Delete Media</div>
+                <div class="title">Edit Theme</div>
                 </br></br>
-                <form id="simpleform" action="/Media_author/DeleteMedia" method="post">
+                <form id="simpleform" action="/Media_author/EditTheme" method="post">
                     <fieldset>
-                        <legend>Media</legend>
+                        <legend>Theme</legend>
                         <div>
                             <label>Name:</label>
-                            <select name="NAME_MEDIA"/>
+                            <select name="NAME_THEME_OLD"/>
                             <%
-                                MediaDAO media = new MediaDAO();
-                                List<Media> medias = new ArrayList();
-                                medias = media.listaMedia();
-                                for (int k = 0; k < medias.size(); k++) {
+                                ThemeDAO theme = new ThemeDAO();
+                                List<Theme> themes = new ArrayList();
+                                themes = theme.listaTheme();
+                                for (int k = 0; k < themes.size(); k++) {
                                     out.println("<option>");
-                                    out.println(medias.get(k).getNameMedia());
+                                    out.println(themes.get(k).getNameTheme());
                                     out.println("</option>");
                                 }
                             %>
                             </select>
                         </div>
                     </fieldset>
+                    </fieldset>
+                    <fieldset>
+                        <legend>New data</legend>
+                        <div>
+                            <label>Name:</label>
+                            <input type="text" name="NAME_THEME" size="auto"/>
+                        </div>
+                    </fieldset>       
                     <br>
-                    <input class="button" type="button" value="Cancel" style="font-size: 16px;" onclick="window.location.href = 'media.jsp';"/>
-                    <input class="button" type="submit" value="Delete" style="font-size: 16px;">
+                    <input class="button" type="button" value="Cancel" style="font-size: 16px;" onclick="window.location.href = 'theme.jsp';"/>
+                    <input class="button" type="submit" value="Edit" style="font-size: 16px;">
                 </form>	
             </div>
         </div>

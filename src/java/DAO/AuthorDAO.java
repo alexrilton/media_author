@@ -73,9 +73,9 @@ public class AuthorDAO extends database_connection{
         this.connection.close();
     }
     
-    public void changeAuthor(String nameAuthorNew, String nameAuthor) throws Exception{
+    public void updateAuthor(String nameAuthorOld, String nameAuthor, int idCountry) throws Exception{
         this.conectar();
-        sql = "UPDATE `author` SET NAME_AUTHOR = ? WHERE (SELECT * FROM `author` WHERE UPPER(`author`.`NAME_AUTHOR`) = UPPER(?))";
+        sql = "UPDATE `author` SET NAME_AUTHOR = (UPPER('"+nameAuthor+"')), ID_COUNTRY = " +idCountry+" WHERE `author`.`NAME_AUTHOR` =(UPPER('"+nameAuthorOld+"'))";
         stm.executeUpdate(sql);
         this.connection.close();
     }
