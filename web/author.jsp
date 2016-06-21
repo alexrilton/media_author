@@ -3,15 +3,17 @@
     Created on : 23/05/2016, 15:55:23
     Author     : alex
 --%>
+<%@page import="DAO.AuthorDAO"%>
+<%@page import="darethink.database_connection"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
 <c:if test="condition">
     <%
-        Class.forName("com.mysql.jdbc.Driver");
-        Connection  conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/author_media", "root", "");
-        Statement Estamento = conexion.createStatement();
+        AuthorDAO author = new AuthorDAO();
+        author.conectar();
+        Statement Estamento = author.connection.createStatement();
     %>
 <!DOCTYPE html>
 
@@ -60,7 +62,7 @@
                     out.println("</table>");
                     rs.close();
                     Estamento.close();
-                    conexion.close();
+                    author.connection.close();
                 %>
                 </div>
             </div>
