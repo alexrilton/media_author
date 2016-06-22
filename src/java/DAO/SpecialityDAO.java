@@ -65,6 +65,23 @@ public class SpecialityDAO extends database_connection {
         this.connection.close();
         return listaSpeciality;
     }
+    
+    public List<Speciality> listaSpecialityRef() throws Exception {
+        this.conectar();
+        List<Speciality> listaSpeciality = new ArrayList();
+        sql = "SELECT * FROM speciality WHERE ID_SPEC NOT IN (SELECT ID_SPEC FROM author_speciality)";
+        rs = stm.executeQuery(sql);
+        ThemeDAO daot = new ThemeDAO();
+        while (rs.next()) {
+            spec = new Speciality();
+            spec.setIdSpec(rs.getInt(1));
+            spec.setNameSpec(rs.getString(2));
+            spec.setTheme(daot.getThemebyId(rs.getInt(3)));
+            listaSpeciality.add(spec);
+        }
+        this.connection.close();
+        return listaSpeciality;
+    }
 
     public List<Speciality> listaSpeciality(int idTheme) throws Exception {
         this.conectar();

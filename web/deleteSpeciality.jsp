@@ -41,7 +41,7 @@
                             <%
                                 SpecialityDAO speciality = new SpecialityDAO();
                                 List<Speciality> specialities = new ArrayList();
-                                specialities = speciality.listaSpeciality();
+                                specialities = speciality.listaSpecialityRef();
                                 for (int k = 0; k < specialities.size(); k++) {
                                     out.println("<option>");
                                     out.println(specialities.get(k).getNameSpec());
