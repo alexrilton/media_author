@@ -5,6 +5,7 @@
  */
 package servlets;
 
+import DAO.CountryDAO;
 import DAO.MediaDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -75,9 +76,11 @@ public class DeleteMedia extends HttpServlet {
         PrintWriter pw = response.getWriter();
         try {
             MediaDAO daom = new MediaDAO();
+            CountryDAO daoc = new CountryDAO();
             String name_media = request.getParameter("NAME_MEDIA");
+            int id_country = daoc.getCountryId(request.getParameter("NAME_COUNTRY"));
             pw.print(name_media);
-            daom.deleteMediaName(name_media);
+            daom.deleteMediaNameCountry(name_media, id_country);
             response.sendRedirect("/Media_author/media.jsp");
         } catch (Exception e) {
             pw.println(e);

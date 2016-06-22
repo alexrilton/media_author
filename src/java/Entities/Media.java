@@ -54,7 +54,7 @@ public class Media {
     public void setCountry(Country country) {
         this.country = country;
     }
-
+    
     @Override
     public int hashCode() {
         int hash = 7;

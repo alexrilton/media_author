@@ -34,7 +34,7 @@ public class MediaDAO extends database_connection{
         this.connection.close();
         return m;
     }
-    
+        
     public int getMediaId(String nameMedia) throws Exception{
         this.conectar();
         sql = "SELECT * FROM media WHERE NAME_MEDIA ='" + nameMedia+"'";
@@ -47,11 +47,28 @@ public class MediaDAO extends database_connection{
         this.connection.close();
         return id;
     }
-       
+           
     public List<Media> listaMedia() throws Exception{
         this.conectar();
         List<Media> listaMedia = new ArrayList();
         sql = "SELECT * FROM media GROUP BY NAME_MEDIA";
+        rs = stm.executeQuery(sql);
+        CountryDAO daoc = new CountryDAO();
+        while(rs.next()){
+            m = new Media();
+            m.setIdMedia(rs.getInt(1));
+            m.setNameMedia(rs.getString(2));
+            m.setCountry(daoc.getCountrybyID(rs.getInt(3)));
+            listaMedia.add(m);
+        }
+        this.connection.close();
+        return listaMedia;
+    }
+    
+    public List<Media> listaMediaRef(int idCountry) throws Exception{
+        this.conectar();
+        List<Media> listaMedia = new ArrayList();
+        sql = "SELECT * FROM media WHERE ID_MEDIA NOT IN (SELECT ID_MEDIA FROM author_speciality) AND ID_COUNTRY = " +idCountry;
         rs = stm.executeQuery(sql);
         CountryDAO daoc = new CountryDAO();
         while(rs.next()){
@@ -99,6 +116,13 @@ public class MediaDAO extends database_connection{
     public void deleteMediaName(String nameMedia) throws Exception{
         this.conectar();
         sql = "DELETE FROM `media` WHERE `media`.`NAME_MEDIA` ='" + nameMedia+"'";
+        stm.executeUpdate(sql);
+        this.connection.close();
+    }
+    
+    public void deleteMediaNameCountry(String nameMedia, int idCountry) throws Exception{
+        this.conectar();
+        sql = "DELETE FROM media WHERE NAME_MEDIA ='" + nameMedia+"' AND ID_COUNTRY ='" + idCountry+"'";
         stm.executeUpdate(sql);
         this.connection.close();
     }
