@@ -114,8 +114,10 @@ public class AuthorSpecialityDAO extends database_connection {
     }
 
     public void insertAuthorSpeciality(int idAuthor, int idSpec, int idCountry, int idMedia) throws Exception {
+        this.conectar();
         sql = "INSERT INTO author_speciality (ID_AUTHOR, ID_SPEC, ID_COUNTRY, ID_MEDIA) VALUES (" + idAuthor + ", " + idSpec + ", " + idCountry + ", " + idMedia + ")";
         stm.executeUpdate(sql);
+        this.connection.close();
     }
 
     public void changeAuthorSpeciality() throws Exception {

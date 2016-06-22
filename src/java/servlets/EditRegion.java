@@ -77,7 +77,7 @@ public class EditRegion extends HttpServlet {
             RegionDAO daor = new RegionDAO();
             String name_region_old = request.getParameter("NAME_REGION_OLD");
             String name_region = request.getParameter("NAME_REGION");
-            //daor.updateRegion(name_region_old, name_region);
+            daor.updateRegion(name_region_old, name_region);
             response.sendRedirect("/Media_author/region.jsp");
         } catch (Exception e) {
             pw.println(e);

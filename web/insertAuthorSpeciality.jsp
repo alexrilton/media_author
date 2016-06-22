@@ -37,7 +37,7 @@
             <div class="content" style="width:25%; float:left">
 		<div class="title">Menu</div>
                 <ul>
-                    <li style="border-bottom: 5px solid #dfdfdf"><a href="author.jsp">Back</a></li>
+                    <li style="border-bottom: 5px solid #dfdfdf"><a href="authorSpeciality.jsp">Back</a></li>
                 </ul>         
             </div>
             <div class="content" style="width:70%; float:right; margin-right: 7px">
@@ -68,7 +68,7 @@
                         <div>
                         <label>Media:</label>
                         <select name="NAME_MEDIA">
-                            <%/*
+                            <%
                                     MediaDAO media = new MediaDAO();
                                     List<Media> medias = new ArrayList();
                                     medias = media.listaMedia();
@@ -87,7 +87,7 @@
                                             out.println("</option>");
                                         }
                                         out.println("</optgroup>");
-                                    }*/
+                                    }
                             
                                         CountryDAO country = new CountryDAO();
                                         List<Country> countries = new ArrayList();

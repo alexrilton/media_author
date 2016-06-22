@@ -80,7 +80,7 @@ public class EditCountry extends HttpServlet {
             String name_country_old = request.getParameter("NAME_COUNTRY_OLD");
             String name_country = request.getParameter("NAME_COUNTRY");
             int id_region = daor.getRegionId(request.getParameter("NAME_REGION"));
-            //daoc.updateCountry(name_country_old, name_country, id_region);
+            daoc.updateCountry(name_country_old, name_country, id_region);
             response.sendRedirect("/Media_author/country.jsp");
         } catch (Exception e) {
             pw.println(e);

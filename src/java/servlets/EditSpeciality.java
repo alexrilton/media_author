@@ -80,7 +80,7 @@ public class EditSpeciality extends HttpServlet {
             String name_spec_old = request.getParameter("NAME_SPEC_OLD");
             String name_spec = request.getParameter("NAME_SPEC");
             int id_theme = daot.getThemeId(request.getParameter("NAME_THEME"));
-            //daos.updateSpeciality(name_spec_old, name_spec, id_theme);
+            daos.updateSpeciality(name_spec_old, id_theme, name_spec);
             response.sendRedirect("/Media_author/speciality.jsp");
         } catch (Exception e) {
             pw.println(e);

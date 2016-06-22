@@ -90,15 +90,9 @@ public class SpecialityDAO extends database_connection {
         this.connection.close();
     }
 
-    public void changeSpeciality(String nameSpec, String nameSpec2) throws Exception {
+    public void updateSpeciality(String nameSpecOld,int idTheme, String nameSpec) throws Exception {
         this.conectar();
-        sql = "SELECT * FROM `speciality` WHERE `speciality`.`NAME_SPEC` LIKE " + nameSpec;
-        rs = stm.executeQuery(sql);
-        if (rs.next()) {
-            spec.setIdSpec(rs.getInt(1));
-            spec.setNameSpec(rs.getString(2));
-        }
-        sql = "UPDATE `speciality` SET idSpec = " + spec.getIdSpec() + ", nameSpec = " + nameSpec2 + "WHERE idSpec = " + spec.getIdSpec();
+        sql = "UPDATE `speciality` SET NAME_SPEC = (UPPER('"+nameSpec+"')), ID_THEME = " +idTheme+" WHERE `speciality`.`NAME_SPEC` =(UPPER('"+nameSpecOld+"'))";
         stm.executeUpdate(sql);
         this.connection.close();
     }
