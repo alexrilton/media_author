@@ -45,7 +45,7 @@
                             <%
                                 AuthorDAO author = new AuthorDAO();
                                 List<Author> authors = new ArrayList();
-                                authors = author.listaAuthor();
+                                authors = author.listaAuthorRef();
                                 for (int k = 0; k < authors.size(); k++) {
                                     out.println("<option>");
                                     out.println(authors.get(k).getNameAuthor());

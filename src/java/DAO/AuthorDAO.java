@@ -66,6 +66,23 @@ public class AuthorDAO extends database_connection{
         return listaAuthor;
     }
     
+    public List<Author> listaAuthorRef() throws Exception{
+        this.conectar();
+        List <Author> listaAuthor = new LinkedList();
+        sql = "SELECT * FROM author WHERE ID_AUTHOR NOT IN (SELECT ID_AUTHOR FROM author_speciality)";
+        rs = stm.executeQuery(sql);
+        CountryDAO daoc = new CountryDAO();
+        while (rs.next()){
+            a = new Author();
+            a.setIdAuthor(rs.getInt(1));
+            a.setNameAuthor(rs.getString(2));
+            a.setCountry(daoc.getCountrybyID(rs.getInt(3)));
+            listaAuthor.add(a);
+        }
+        this.connection.close();
+        return listaAuthor;
+    }
+    
     public void insertAuthor(String nameAuthor, int idCountry) throws Exception{
         this.conectar();
         sql = "INSERT INTO author (NAME_AUTHOR, ID_COUNTRY) VALUES (UPPER('" +nameAuthor+  "')," +idCountry+  ")";
