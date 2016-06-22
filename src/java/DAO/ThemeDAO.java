@@ -76,6 +76,22 @@ public class ThemeDAO extends database_connection{
         return listaTheme;
     }
     
+    public List<Theme> listaThemeRef() throws Exception{
+        this.conectar();
+        List<Theme> listaTheme = new LinkedList();
+        sql = "SELECT * FROM theme WHERE ID_THEME NOT IN (SELECT ID_THEME FROM speciality)";
+        rs = stm.executeQuery(sql);
+        while(rs.next()){
+            t = new Theme();
+            t.setIdTheme(rs.getInt(1));
+            t.setNameTheme(rs.getString(2));
+            //st.setSpec((Speciality) rs.getObject(3));
+            listaTheme.add(t);
+        }
+        this.connection.close();
+        return listaTheme;
+    }
+    
     public void insertTheme(String nameTheme) throws Exception{
         this.conectar();
         sql = "INSERT INTO theme (NAME_THEME) VALUES(UPPER ('" +nameTheme+  "'))";

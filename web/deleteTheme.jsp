@@ -45,9 +45,9 @@
                             <label>Name:</label>
                             <select name="NAME_THEME"/>
                             <%
-                                ThemeDAO media = new ThemeDAO();
+                                ThemeDAO theme = new ThemeDAO();
                                 List<Theme> themes = new ArrayList();
-                                themes = media.listaTheme();
+                                themes = theme.listaThemeRef();
                                 for (int k = 0; k < themes.size(); k++) {
                                     out.println("<option>");
                                     out.println(themes.get(k).getNameTheme());
