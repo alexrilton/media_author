@@ -53,6 +53,30 @@
         <servlet-name>DeleteTheme</servlet-name>
         <servlet-class>servlets.DeleteTheme</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeleteRegion</servlet-name>
+        <servlet-class>servlets.DeleteRegion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteCountry</servlet-name>
+        <servlet-class>servlets.DeleteCountry</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteSpeciality</servlet-name>
+        <servlet-class>servlets.DeleteSpeciality</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditCountry</servlet-name>
+        <servlet-class>servlets.EditCountry</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditRegion</servlet-name>
+        <servlet-class>servlets.EditRegion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditSpeciality</servlet-name>
+        <servlet-class>servlets.EditSpeciality</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>app1conn</servlet-name>
         <url-pattern>/app1conn</url-pattern>
@@ -104,6 +128,30 @@
     <servlet-mapping>
         <servlet-name>DeleteTheme</servlet-name>
         <url-pattern>/DeleteTheme</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteRegion</servlet-name>
+        <url-pattern>/DeleteRegion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteCountry</servlet-name>
+        <url-pattern>/DeleteCountry</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteSpeciality</servlet-name>
+        <url-pattern>/DeleteSpeciality</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditCountry</servlet-name>
+        <url-pattern>/EditCountry</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditRegion</servlet-name>
+        <url-pattern>/EditRegion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditSpeciality</servlet-name>
+        <url-pattern>/EditSpeciality</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>home.jsp</welcome-file>
