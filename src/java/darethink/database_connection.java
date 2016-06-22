@@ -25,10 +25,10 @@ public class database_connection {
     public Connection connection;
 
     public void conectar() throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
-        final String url = "jdbc:mysql://127.0.0.1:3306/author_media";
+        final String url = "jdbc:mysql://192.168.1.187:3306/author_media";
         Properties connectProperties = new Properties();
         connectProperties.put("user", "root");//user com permissao grant all
-        connectProperties.put("password", "");
+        connectProperties.put("password", "dare123456");
         this.connection = null;
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();//obtendo a conexao
