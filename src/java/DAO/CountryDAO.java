@@ -119,16 +119,16 @@ public class CountryDAO extends database_connection{
         this.connection.close();
     }
     
-    public void changeCountryName(String nameCountryNew, String nameCountry) throws Exception{
+    public void updateCountry(String nameCountryOld, String nameCountry, int idRegion) throws Exception{
         this.conectar();
-        sql = "UPDATE `country` SET NAME_COUNTRY = ? WHERE (SELECT * FROM `country` WHERE UPPER(`country`.`NAME_COUNTRY`) = UPPER(?))";
+        sql = "UPDATE `country` SET NAME_COUNTRY = (UPPER('"+nameCountry+"')), ID_REGION = " +idRegion+" WHERE `country`.`NAME_COUNTRY` =(UPPER('"+nameCountryOld+"'))";
         stm.executeUpdate(sql);
         this.connection.close();
     }
     
     public void deleteCountryName(String nameCountry) throws Exception{
         this.conectar();
-        sql = "DELETE FROM `country` WHERE `country`.`NAME_COUNTRY` = '" + nameCountry+"'";
+        sql = "DELETE FROM `country` WHERE `country`.`NAME_COUNTRY` ='" + nameCountry+"'";
         stm.executeUpdate(sql);
         this.connection.close();
     }

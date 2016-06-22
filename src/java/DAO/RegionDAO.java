@@ -98,17 +98,11 @@ public class RegionDAO extends database_connection{
         this.connection.close();
     }
     
-    public void changeRegionName(String nameRegion, String nameRegion2) throws Exception{
+    public void updateRegion(String nameRegionOld, String nameRegion) throws Exception{
         this.conectar();
-        sql = "SELECT * FROM `region` WHERE `region`.`NAME_REGION` LIKE " + nameRegion;
-        rs = stm.executeQuery(sql);
-        if(rs.next()){
-            r.setIdRegion(rs.getInt(1));
-            r.setNameRegion(rs.getString(2));
-        }
-        sql = "UPDATE `region` SET idRegion = " + r.getIdRegion() + ", nameRegion = " + nameRegion2 + "WHERE idRegion = " + r.getIdRegion();
-        this.connection.close();
+        sql = "UPDATE `region` SET NAME_REGION = (UPPER('"+nameRegion+"')) WHERE `region`.`NAME_REGION` =(UPPER('"+nameRegionOld+"'))";
         stm.executeUpdate(sql);
+        this.connection.close();
     }
     
     public void deleteRegionName(String nameRegion) throws Exception{
