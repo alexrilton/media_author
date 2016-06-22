@@ -77,30 +77,6 @@
         <servlet-name>DeleteTheme</servlet-name>
         <servlet-class>servlets.DeleteTheme</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>DeleteRegion</servlet-name>
-        <servlet-class>servlets.DeleteRegion</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>DeleteCountry</servlet-name>
-        <servlet-class>servlets.DeleteCountry</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>DeleteSpeciality</servlet-name>
-        <servlet-class>servlets.DeleteSpeciality</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>EditCountry</servlet-name>
-        <servlet-class>servlets.EditCountry</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>EditRegion</servlet-name>
-        <servlet-class>servlets.EditRegion</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>EditSpeciality</servlet-name>
-        <servlet-class>servlets.EditSpeciality</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>app1conn</servlet-name>
         <url-pattern>/app1conn</url-pattern>
