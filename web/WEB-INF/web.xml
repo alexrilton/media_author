@@ -153,6 +153,30 @@
         <servlet-name>DeleteTheme</servlet-name>
         <url-pattern>/DeleteTheme</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteRegion</servlet-name>
+        <url-pattern>/DeleteRegion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteCountry</servlet-name>
+        <url-pattern>/DeleteCountry</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteSpeciality</servlet-name>
+        <url-pattern>/DeleteSpeciality</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditCountry</servlet-name>
+        <url-pattern>/EditCountry</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditRegion</servlet-name>
+        <url-pattern>/EditRegion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditSpeciality</servlet-name>
+        <url-pattern>/EditSpeciality</url-pattern>
+    </servlet-mapping>
     <welcome-file-list>
         <welcome-file>home.jsp</welcome-file>
     </welcome-file-list>
