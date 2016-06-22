@@ -41,7 +41,7 @@
                             <%
                                 RegionDAO region = new RegionDAO();
                                 List<Region> regions = new ArrayList();
-                                regions = region.listaRegion();
+                                regions = region.listaRegionRef();
                                 for (int k = 0; k < regions.size(); k++) {
                                     out.println("<option>");
                                     out.println(regions.get(k).getNameRegion());

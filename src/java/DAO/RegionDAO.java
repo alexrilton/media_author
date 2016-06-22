@@ -87,6 +87,21 @@ public class RegionDAO extends database_connection{
         return listaRegion;
     }
     
+    public List<Region> listaRegionRef() throws Exception{
+        this.conectar();
+        List<Region> listaRegion = new ArrayList();
+        sql = "SELECT  * FROM  region WHERE ID_REGION NOT IN (SELECT ID_REGION FROM country)";
+        rs = stm.executeQuery(sql);
+        while (rs.next()){
+            r = new Region();
+            r.setIdRegion(rs.getInt(1));
+            r.setNameRegion(rs.getString(2));
+            listaRegion.add(r);
+        }
+        this.connection.close();
+        return listaRegion;
+    }
+    
     public void insertRegion(String nameRegion) throws Exception{
         this.conectar();
         sql = "SELECT * FROM `region` WHERE `region`.`NAME_REGION` = '" + nameRegion+"'";
