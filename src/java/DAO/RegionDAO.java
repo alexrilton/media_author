@@ -133,4 +133,19 @@ public class RegionDAO extends database_connection{
         stm.executeUpdate(sql);
         this.connection.close();
     }
+    
+    public List<Region> searchRegion(String nameRegion) throws Exception{
+        this.conectar();
+        List<Region> regions = new ArrayList();
+        sql = "SELECT * FROM region WHERE NAME_REGION CONTAINS UPPER('" +nameRegion+ "')";
+        rs = stm.executeQuery(sql);
+        while(rs.next()){
+            r = new Region();
+            r.setIdRegion(rs.getInt(1));
+            r.setNameRegion(rs.getString(2));
+            regions.add(r);
+        }
+        this.connection.close();
+        return regions;
+    }
 }

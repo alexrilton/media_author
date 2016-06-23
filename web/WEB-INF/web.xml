@@ -77,6 +77,10 @@
         <servlet-name>DeleteTheme</servlet-name>
         <servlet-class>servlets.DeleteTheme</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SearchRegion</servlet-name>
+        <servlet-class>servlets.SearchRegion</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>app1conn</servlet-name>
         <url-pattern>/app1conn</url-pattern>
@@ -176,6 +180,10 @@
     <servlet-mapping>
         <servlet-name>EditSpeciality</servlet-name>
         <url-pattern>/EditSpeciality</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchRegion</servlet-name>
+        <url-pattern>/SearchRegion</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>home.jsp</welcome-file>

@@ -36,7 +36,8 @@
                     <ul>
                         <li><a href="insertMedia.jsp">Insert Media</a></li>
                         <li><a href="editMedia.jsp">Edit Media</a></li> 
-                        <li><a href="deleteMedia.jsp">Delete Media</a></li> 
+                        <li><a href="deleteMedia.jsp">Delete Media</a></li>
+                        <li><a href="searchMedia.jsp">Search Media</a></li>
                         <li style="border-bottom: 5px solid #dfdfdf"><a href="home.jsp">Back</a></li>
                     </ul>         
                 </div>

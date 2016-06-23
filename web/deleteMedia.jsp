@@ -49,7 +49,7 @@
                                 for(int i = 0; i < countries.size(); i++){
                                     out.println("<optgroup");
                                     out.println(" label='"+ countries.get(i).getNameCountry()+"'>");
-                                    out.print("<div>"+countries.get(i).getNameCountry()+"</div>");
+                                    out.print("<div >"+countries.get(i).getNameCountry()+"</div>");
                                     MediaDAO media = new MediaDAO();
                                     List<Media> medias = new ArrayList();
                                     medias = media.listaMediaRef(countries.get(i).getIdCountry());

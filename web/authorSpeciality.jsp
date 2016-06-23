@@ -27,6 +27,7 @@
                     <li><a href="insertAuthorSpeciality.jsp">Insert Author - Speciality</a></li>
                     <li><a href="editAuthorSpeciality.jsp">Edit Author - Speciality</a></li> 
                     <li><a href="deleteAuthorSpeciality.jsp">Delete Author - Speciality</a></li>
+                    <li><a href="searchAuthorSpeciality.jsp">Search Author - Speciality</a></li>
                     <li style="border-bottom: 5px solid #dfdfdf"><a href="author.jsp">Back</a></li>
                 </ul>         
             </div>

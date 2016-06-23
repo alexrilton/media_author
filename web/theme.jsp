@@ -35,6 +35,7 @@
                         <li><a href="insertTheme.jsp">Insert Theme</a></li>
                         <li><a href="editTheme.jsp">Edit Theme</a></li>
                         <li><a href="deleteTheme.jsp">Delete Theme</a></li>
+                        <li><a href="searchTheme.jsp">Search Theme</a></li>
                         <li style="border-bottom: 5px solid #dfdfdf"><a href="speciality.jsp">Back</a></li>
                     </ul>         
                 </div>

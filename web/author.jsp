@@ -35,8 +35,9 @@
                 <ul>
                     <li><a href="insertAuthor.jsp">Insert Author</a></li>
                     <li><a href="editAuthor.jsp">Edit Author</a></li>
-                    <li><a href="deleteAuthor.jsp">Delete Author</a></li> 
-                    <li><a href="authorSpeciality.jsp">Speciality</a></li> 
+                    <li><a href="deleteAuthor.jsp">Delete Author</a></li>
+                    <li><a href="searchAuthor.jsp">Search Author</a></li> 
+                    <li><a href="authorSpeciality.jsp">Speciality</a></li>
                     <li style="border-bottom: 5px solid #dfdfdf"><a href="home.jsp">Back</a></li>
                 </ul>         
             </div>

@@ -34,6 +34,7 @@
                         <li><a href="insertRegion.jsp">Insert Region</a></li>
                         <li><a href="editRegion.jsp">Edit Region</a></li>
                         <li><a href="deleteRegion.jsp">Delete Region</a></li>
+                        <li><a href="searchRegion.jsp">Search Region</a></li>
                         <li style="border-bottom: 5px solid #dfdfdf"><a href="country.jsp">Back</a></li>
                     </ul>         
                 </div>

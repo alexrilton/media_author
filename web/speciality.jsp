@@ -37,6 +37,7 @@
                         <li><a href="insertSpeciality.jsp">Insert Speciality</a></li>
                         <li><a href="editSpeciality.jsp">Edit Speciality</a></li>
                         <li><a href="deleteSpeciality.jsp">Delete Speciality</a></li>
+                        <li><a href="searchSpeciality.jsp">Search Speciality</a></li>
                         <li><a href="theme.jsp">Theme</a></li>
                         <li style="border-bottom: 5px solid #dfdfdf"><a href="home.jsp">Back</a></li>
                     </ul>         
