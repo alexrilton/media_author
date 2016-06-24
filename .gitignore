@@ -2,7 +2,14 @@
 *.class
 
 #netbeans ignore personal stuff
-nbproject/
+
+project-root-directory/
++ nbproject/
+  build-impl.xml
+  + private/
+  + project.properties
+  + project.xml
++ build.xml
 
 ## generic files to ignore
 *~
