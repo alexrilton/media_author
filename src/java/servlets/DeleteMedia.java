@@ -77,9 +77,12 @@ public class DeleteMedia extends HttpServlet {
         try {
             MediaDAO daom = new MediaDAO();
             CountryDAO daoc = new CountryDAO();
+            String name_country = request.getParameter("NAME_COUNTRY");
+            request.getSession().setAttribute("N_COUNTRY", name_country); 
+            response.sendRedirect("deleteMedia.jsp");
             String name_media = request.getParameter("NAME_MEDIA");
             int id_country = daoc.getCountryId(request.getParameter("NAME_COUNTRY"));
-            pw.print(name_media);
+            //pw.print(name_media);
             daom.deleteMediaNameCountry(name_media, id_country);
             response.sendRedirect("/Media_author/media.jsp");
         } catch (Exception e) {

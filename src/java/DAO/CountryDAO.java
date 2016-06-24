@@ -78,7 +78,24 @@ public class CountryDAO extends database_connection{
         return listaCountry;
     }
     
-    public List<Country> listaCountry(int idRegion) throws Exception{
+    public List<Country> listaCountryRef() throws Exception{
+        this.conectar();
+        List<Country> listaCountry = new ArrayList();
+        sql = "SELECT * FROM  country WHERE ID_COUNTRY NOT IN (SELECT ID_COUNTRY FROM author_speciality) AND ID_COUNTRY NOT IN (SELECT ID_COUNTRY FROM author) AND ID_COUNTRY NOT IN (SELECT ID_COUNTRY FROM media)";
+        rs = stm.executeQuery(sql);
+        RegionDAO daor = new RegionDAO();        
+        while(rs.next()){
+            c = new Country();
+            c.setIdCountry(rs.getInt(1));
+            c.setNameCountry(rs.getString(2));
+            c.setRegion(daor.getRegionbyID(rs.getInt(3)));
+            listaCountry.add(c);
+        }
+        this.connection.close();
+        return listaCountry;
+    }
+    
+    public List<Country> listaCountryRef(int idRegion) throws Exception{
         this.conectar();
         List<Country> listaCountry = new ArrayList();
         sql = "select * from country where ID_REGION =" + idRegion;

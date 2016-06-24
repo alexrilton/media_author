@@ -41,24 +41,30 @@
                         <legend>Media</legend>
                         <div>
                             <label>Name:</label>
-                            <select name="NAME_MEDIA"/>
+                            <select name="NAME_COUNTRY"/>
                             <%
                                 CountryDAO country = new CountryDAO();
                                 List<Country> countries = new ArrayList();
                                 countries = country.listaCountry();
                                 for(int i = 0; i < countries.size(); i++){
-                                    out.println("<optgroup");
-                                    out.println(" label='"+ countries.get(i).getNameCountry()+"'>");
-                                    out.print("<div >"+countries.get(i).getNameCountry()+"</div>");
-                                    MediaDAO media = new MediaDAO();
-                                    List<Media> medias = new ArrayList();
-                                    medias = media.listaMediaRef(countries.get(i).getIdCountry());
-                                    for (int k = 0; k < medias.size(); k++) {
-                                        out.println("<option>");
-                                        out.println(medias.get(k).getNameMedia());
-                                        out.println("</option>");
-                                    }
-                                    out.println("</optgroup>");
+                                    out.println("<option>");
+                                    out.print(countries.get(i).getNameCountry());
+                                    out.println("</option>");
+                                }
+                            %>
+                            </select>
+                            <select name="NAME_MEDIA"/>
+                            <%
+                                String msg = (String) request.getSession().getAttribute("N_COUNTRY"); 
+                                MediaDAO media = new MediaDAO();
+                                List<Media> medias = new ArrayList();
+                                CountryDAO daoc = new CountryDAO();
+                                int id_country = daoc.getCountryId(request.getParameter("N_COUNTRY"));
+                                medias = media.listaMediaRef(id_country);
+                                for (int k = 0; k < medias.size(); k++) {
+                                    out.println("<option>");
+                                    out.println(medias.get(k).getNameMedia());
+                                    out.println("</option>");
                                 }
                             %>
                             </select>

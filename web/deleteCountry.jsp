@@ -41,7 +41,7 @@
                             <%
                                 CountryDAO country = new CountryDAO();
                                 List<Country> countries = new ArrayList();
-                                countries = country.listaCountry();
+                                countries = country.listaCountryRef();
                                 for (int k = 0; k < countries.size(); k++) {
                                     out.println("<option>");
                                     out.println(countries.get(k).getNameCountry());
